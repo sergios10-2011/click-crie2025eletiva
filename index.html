@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escola Exemplo - Landing Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* Cabeçalho */
+    header {
+      background: #0056b3;
+      color: #fff;
+      padding: 15px 20px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      
+    margin-right: 60px;
+       
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Seções */
+    section {
+      padding: 100px 20px 50px;
+      min-height: 100vh;
+    }
+
+    #inicio {
+      background: url("https://picsum.photos/1200/600?school") no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    #inicio h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    #sobre, #eletiva, #canal {
+      background: #f9f9f9;
+    }
+
+    h2 {
+      color: #0056b3;
+    }
+
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .videos iframe {
+      width: 100%;
+      height: 200px;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0056b3;
+      color: 
+      #fff;
+    }
+     .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 15px;
+    
+    }
+    .eletivas-card{
+      width: 150px;
+      height: 150px;
+      border:  4px solid #070707;
+      box-shadow: 5px 5px 5px  #3007d7;
+      
+      
+    
+    }
+     .eletivas-card .info {
+      padding: 5px;
+      width:  200%;
+    
+    }
+    .eletivas-card .info h3 {
+      font-size: 16px;
+      }
+      .card-grid img{
+      width: 100%;
+      }
+      .texto{
+        text-align: center;
+        
+      }
+      .visitante{
+        color: #070707;
+        font-size: 15px;
+      }
+       .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px; /* espaço entre os vídeos */
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .videos video {
+      width: 100%;
+      border-radius: 10px; /* bordas arredondadas */
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* sombra suave */
+    }
+
+    
+        .audio-card {
+            background-color: #fff;
+            padding: 15px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 500px;
+        }
+
+        .audio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        audio {
+            width: 250px; /* define o tamanho do player */
+        }
+  </style>
+</head>
+<body>
+ 
+
+  <!-- Cabeçalho -->
+  <header>
+    <h1>ELETIVA CLICK E CRIE</h1>
+     <h1 class="visitante">Número de Visitantes: <span id="visitante-contador">0</span></h1>
+    <nav>
+      <ul>
+         
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#videos">Vídeos Educativos</a></li>
+        <li><a href="robotica.html">Eletiva</a></li>
+        <li><a href="#canal">Por Dentro</a></li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Início -->
+  <section id="inicio">
+    <h2>Bem-vindo à Eletiva Click e Crie</h2>
+    <h2>Fundamentos da língua Portuguesa e<br> da Matemática.</h2>
+  </section>
+
+  <!-- Sobre Nós -->
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>
+      Gregório Bezerra, operário e militante influenciado pela Revolução Russa, foi analfabeto até os 25 anos e tornou-se figura central da esquerda brasileira. Participou de movimentos operários desde 1917 e, devido à militância, passou 23 anos preso ao longo da vida. Filiado ao PCB em 1930, ajudou a fundar a ANL e participou da tentativa de insurreição de 1935, sendo preso e torturado. Anistiado em 1945, foi eleito deputado constituinte, mas teve o mandato cassado em 1948, voltando à clandestinidade. Preso novamente após o golpe de 1964, foi condenado e libertado em 1969 na troca pelo embaixador Charles Elbrick, exilando-se por dez anos. Com a anistia de 1979, retornou ao Brasil, candidatou-se em 1982 e publicou suas “Memórias”. Morreu em 1983.
+   
+    <div class="audio-card">
+        <audio controls>
+            <source src="sena 1.mp3" type="audio/mpeg">
+            Seu navegador não suporta a reprodução de áudio.
+        </audio>
+        <p> Diretora Cassia Mesquita</p>
+    </div>
+
+    <div class="audio-card">
+        <audio controls>
+            <source src="sena 3.mp3" type="audio/mpeg">
+            Seu navegador não suporta a reprodução de áudio.
+        </audio>
+         <p> Vece-Diretor Ricardo</p>
+    </div>
+
+    <div class="audio-card">
+        <audio controls>
+            <source src="sena 4.mp3" type="audio/mpeg">
+            Seu navegador não suporta a reprodução de áudio.
+        </audio>
+         <p> Vice-Diretora Suzilaine</p>
+    </div>
+
+    
+
+    </div>
+  </section>
+
+  <!-- Vídeos Educativos -->
+  <section id="videos">
+    <h2>Vídeos Educativos</h2>
+    <h2 class="texto">Saúde Mental</h2>
+     <div class="videos">
+    <video src="video 1.mp4" controls></video>
+    <video src="video 2.mp4" controls></video>
+    <video src="video 3.mp4" controls></video>
+    <video src="video4.mp4" controls></video>
+     <video src="exercicio.mp4" controls></video>
+       <video src="exercicio2.mp4" controls></video>
+  </div>>
+  </section>
+
+  <!-- Eletiva -->
+  <section id="eletiva">
+    <h2>Eletiva</h2>
+    <p>
+      Oferecemos disciplinas eletivas que permitem aos alunos explorar novos conhecimentos e desenvolver habilidades
+      além do currículo tradicional, como Robótica, Artes Digitais e Empreendedorismo.
+    </p>
+<div class="card-grid">
+    <div class="eletivas-card">
+        <a href="robotica.html">
+        <img src="robotica/robotica.jpeg" class="imagens" ></a>
+        <div class="info">
+          <h3>Eletiva de robótica</h3>
+
+          
+          
+        </div>
+
+    </div>
+
+
+         <div class="eletivas-card">
+       <a href="cidademiniaturas.html">
+        <img src="miniatura.jpeg" class="imagens" ></a>
+        <div class="info">
+          <h3>Eletiva miniaturas</h3>
+          
+        </div>
+      </div>
+
+       <div class="eletivas-card">
+       <a href="#">
+        <img src="robotica/robotica.jpeg" class="imagens" ></a>
+        <div class="info">
+          <h3>Eletiva</h3>
+          
+        </div>
+      </div>
+
+       <div class="eletivas-card">
+       <a href="#">
+        <img src="robotica/robotica.jpeg" class="imagens" ></a>
+        <div class="info">
+          <h3>Eletiva</h3>
+        
+        </div>
+      </div>
+
+       <div class="eletivas-card">
+       <a href="#">
+        <img src="robotica/robotica.jpeg" class="imagens" ></a>
+        <div class="info">
+          <h3>Eletiva</h3>
+          
+        </div>
+      </div>
+
+       <div class="eletivas-card">
+       <a href="#">
+        <img src="robotica/robotica.jpeg" class="imagens" ></a>
+        <div class="info">
+          <h3>Eletiva</h3>
+          
+        </div>
+      </div>
+
+       <div class="eletivas-card">
+       <a href="#">
+        <img src="robotica/robotica.jpeg" class="imagens" ></a>
+        <div class="info">
+          <h3>Eletiva</h3>
+          
+        </div>
+      </div>
+
+       <div class="eletivas-card">
+        <a href="robotica.html">
+        <img src="mancala1.jpg" class="imagens" ></a>
+        <div class="info">
+          <h3>Eletiva de robótica</h3>
+
+          
+          
+        </div>
+
+    </div>
+</div>
+
+
+  </section>
+
+  <!-- Canal do Aluno -->
+  <section id="canal">
+    <h2>Por Dentro</h2>
+    <p>
+      Acesse nosso portal exclusivo para alunos e acompanhe materiais, atividades e comunicados.
+    </p>
+    <p><a href="#" style="color:#0056b3; font-weight:bold;">Clique aqui para acessar o Canal do Aluno</a></p>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Eletiva CLICK E CRIE</p>
+  </footer>
+    <script>
+        // Função para atualizar o contador
+        function atualizarContador() {
+            let contador = localStorage.getItem('visitanteContador');
+            if (contador) {
+                contador = parseInt(contador) + 1;
+            } else {
+                contador = 1;
+            }
+            localStorage.setItem('visitanteContador', contador);
+            document.getElementById('visitante-contador').textContent = contador;
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = atualizarContador;
+    </script>
+</body>
+</html>

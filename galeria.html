@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Galeria de Fotos — Simples e Limpa</title>
+  <!-- Tailwind CDN (rápido para protótipo) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Pequenas customizações para aparência e transições */
+    .photo-card{cursor:pointer;transition:transform .2s ease, box-shadow .2s ease}
+    .photo-card:hover{transform:translateY(-6px); box-shadow:0 8px 24px rgba(0,0,0,.12)}
+    .lightbox-bg{background:rgba(0,0,0,.75)}
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
+  <header class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-semibold">Galeria de Fotos</h1>
+      <nav class="text-sm text-gray-600">Dica: clique em uma foto para abrir em tela cheia</nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8 flex-1">
+    <!-- Controles simples (filtros / upload placeholders) -->
+    <div class="mb-6 flex items-center gap-3">
+      <input id="search" type="search" placeholder="Pesquisar (ex: praia, evento)" class="flex-1 bg-white border rounded px-3 py-2 shadow-sm" />
+      <button id="shuffleBtn" class="px-4 py-2 bg-indigo-600 text-white rounded shadow-sm">Embaralhar</button>
+    </div>
+
+    <!-- Grid responsivo -->
+    <section id="gallery" class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <!-- As imagens abaixo são exemplos. Substitua os atributos `data-full`/`src` pela suas imagens. -->
+      <!-- Cada card usa lazy loading nativo (loading="lazy") -->
+
+      <figure class="photo-card rounded overflow-hidden bg-white">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop" alt="Foto 1" data-full="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2400&auto=format&fit=crop" class="w-full h-48 object-cover" />
+      </figure>
+
+      <figure class="photo-card rounded overflow-hidden bg-white">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop" alt="Foto 2" data-full="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2400&auto=format&fit=crop" class="w-full h-48 object-cover" />
+      </figure>
+
+      <figure class="photo-card rounded overflow-hidden bg-white">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=1200&auto=format&fit=crop" alt="Foto 3" data-full="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=2400&auto=format&fit=crop" class="w-full h-48 object-cover" />
+      </figure>
+
+      <figure class="photo-card rounded overflow-hidden bg-white">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=1200&auto=format&fit=crop" alt="Foto 4" data-full="https://images.unsplash.com/photo-1470770903676-69b98201ea1c?q=80&w=2400&auto=format&fit=crop" class="w-full h-48 object-cover" />
+      </figure>
+
+      <figure class="photo-card rounded overflow-hidden bg-white">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop" alt="Foto 5" data-full="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=2400&auto=format&fit=crop" class="w-full h-48 object-cover" />
+      </figure>
+
+      <figure class="photo-card rounded overflow-hidden bg-white">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" alt="Foto 6" data-full="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2400&auto=format&fit=crop" class="w-full h-48 object-cover" />
+      </figure>
+
+      <figure class="photo-card rounded overflow-hidden bg-white">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1200&auto=format&fit=crop" alt="Foto 7" data-full="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=2400&auto=format&fit=crop" class="w-full h-48 object-cover" />
+      </figure>
+
+      <figure class="photo-card rounded overflow-hidden bg-white">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1200&auto=format&fit=crop" alt="Foto 8" data-full="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=2400&auto=format&fit=crop" class="w-full h-48 object-cover" />
+      </figure>
+
+    </section>
+  </main>
+
+  <!-- Lightbox / Modal (inicia oculto) -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+    <div class="absolute inset-0 lightbox-bg"></div>
+    <div class="relative max-w-5xl w-full max-h-full">
+      <button id="closeBtn" class="absolute top-2 right-2 bg-white/80 rounded-full p-2 shadow">✕</button>
+      <button id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow">◀</button>
+      <button id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 shadow">▶</button>
+      <img id="lightboxImg" src="" alt="" class="w-full h-auto max-h-[80vh] mx-auto rounded" />
+      <p id="caption" class="text-center mt-2 text-sm text-white/90"></p>
+    </div>
+  </div>
+
+  <footer class="text-center text-sm text-gray-500 py-6">Galeria criada — estilo "Simples e limpo"</footer>
+
+  <script>
+    // Elementos
+    const gallery = document.getElementById('gallery')
+    const lightbox = document.getElementById('lightbox')
+    const lightboxImg = document.getElementById('lightboxImg')
+    const caption = document.getElementById('caption')
+    const closeBtn = document.getElementById('closeBtn')
+    const prevBtn = document.getElementById('prevBtn')
+    const nextBtn = document.getElementById('nextBtn')
+    const searchInput = document.getElementById('search')
+    const shuffleBtn = document.getElementById('shuffleBtn')
+
+    // Construção da lista de imagens
+    let items = Array.from(gallery.querySelectorAll('img'))
+    let currentIndex = 0
+
+    function openLightbox(index){
+      const img = items[index]
+      lightboxImg.src = img.dataset.full || img.src
+      lightboxImg.alt = img.alt || ''
+      caption.textContent = img.alt || ''
+      currentIndex = index
+      lightbox.classList.remove('hidden')
+      lightbox.classList.add('flex')
+      document.body.style.overflow = 'hidden'
+    }
+
+    function closeLightbox(){
+      lightbox.classList.add('hidden')
+      lightbox.classList.remove('flex')
+      lightboxImg.src = ''
+      document.body.style.overflow = ''
+    }
+
+    function showNext(){
+      currentIndex = (currentIndex + 1) % items.length
+      openLightbox(currentIndex)
+    }
+    function showPrev(){
+      currentIndex = (currentIndex - 1 + items.length) % items.length
+      openLightbox(currentIndex)
+    }
+
+    // Eventos de clique nas imagens
+    items.forEach((img, idx) => {
+      img.closest('figure').addEventListener('click', () => openLightbox(idx))
+    })
+
+    // Controles do lightbox
+    closeBtn.addEventListener('click', closeLightbox)
+    nextBtn.addEventListener('click', showNext)
+    prevBtn.addEventListener('click', showPrev)
+    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox() })
+
+    // Teclado
+    document.addEventListener('keydown', (e) => {
+      if(lightbox.classList.contains('hidden')) return
+      if(e.key === 'Escape') closeLightbox()
+      if(e.key === 'ArrowRight') showNext()
+      if(e.key === 'ArrowLeft') showPrev()
+    })
+
+    // Pesquisa simples por alt text
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase()
+      items.forEach(img => {
+        const fig = img.closest('figure')
+        const text = (img.alt || '').toLowerCase()
+        fig.style.display = text.includes(q) ? '' : 'none'
+      })
+    })
+
+    // Embaralhar (shuffle) — mantém os elementos DOM mas altera a ordem
+    shuffleBtn.addEventListener('click', () => {
+      const figs = Array.from(gallery.children)
+      for(let i = figs.length -1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1))
+        gallery.insertBefore(figs[j], figs[i])
+      }
+      // atualizar referência de items
+      items = Array.from(gallery.querySelectorAll('img'))
+    })
+
+    // Acessibilidade mínima: foco ao abrir lightbox
+    closeBtn.addEventListener('keydown', (e)=>{ if(e.key === 'Tab' && !e.shiftKey) e.preventDefault() })
+
+    // Observação: para produção, hospede suas imagens localmente ou em CDN e remova o uso direto de unsplash com query strings.
+  </script>
+</body>
+</html>
